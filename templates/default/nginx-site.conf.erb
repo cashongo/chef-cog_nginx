@@ -1,0 +1,13 @@
+server {
+        listen          <%= @listen %>;
+        access_log      /var/log/nginx/<%= @sitename %>_access.log;
+        error_log       /var/log/nginx/<%= @sitename %>_error.log;
+
+        server_name     <%= @sitename %> <% for @aliasname in @sitealiases %> <%= @aliasname %><% end %>;
+        root            <%= @docroot %>;
+
+        <% for @appname in  @siteapps %>
+        include         /etc/nginx/include/<%= @appname %>.conf;
+        <% end %>
+
+      }
