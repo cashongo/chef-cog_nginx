@@ -67,7 +67,7 @@ directory '/etc/nginx/include' do
   mode '0755'
 end
 
-%w[pma.conf  wordpress.conf  wordpress-w3-total-cache.conf  wordpress-wp-super-cache.conf  wordpress-restrictions.conf dokuwiki.conf php.conf monitoring.conf].each do |nginxconf|
+%w[pma.conf  wordpress.conf  wordpress-w3-total-cache.conf  wordpress-wp-super-cache.conf  wordpress-restrictions.conf dokuwiki.conf php.conf monitoring.conf piwik.conffcgi_piwik_cache.conf  fcgi_piwik_long_cache.conf].each do |nginxconf|
   cookbook_file nginxconf do
     action :create
     path "/etc/nginx/include/#{nginxconf}"
