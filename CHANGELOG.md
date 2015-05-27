@@ -1,8 +1,6 @@
-# 0.1.11
+# cog_nginx CHANGELOG
+========================
 
-Added support for piwik virtual hosts
-
-
-# 0.1.0
-
-Initial release of cog_c7nginx
+0.2.0
+-----
+- Lauri Jesmin - add customblock variable to nginx site resource
