@@ -30,7 +30,8 @@ action :create  do
       :sitealiases => new_resource.sitealiases,
       :docroot => new_resource.docroot,
       :siteapps => new_resource.siteapps,
-      :listen => new_resource.listen
+      :listen => new_resource.listen,
+      :customblock => new_resource.customblock
       })
   end
   link "/etc/nginx/sites-enabled/#{new_resource.siteid}.conf" do

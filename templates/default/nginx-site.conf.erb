@@ -5,7 +5,7 @@ server {
 
         server_name     <%= @sitename %> <% for @aliasname in @sitealiases %> <%= @aliasname %><% end %>;
         root            <%= @docroot %>;
-
+        <%= @customblock %>
         <% for @appname in  @siteapps %>
         include         /etc/nginx/include/<%= @appname %>.conf;
         <% end %>
