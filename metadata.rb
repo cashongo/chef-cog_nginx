@@ -4,7 +4,7 @@ maintainer_email 'lauri.jesmin@cashongo.co.uk'
 license          'All rights reserved'
 description      'Installs NGINX'
 long_description ''
-version          '0.1.14'
+version          '0.2.0'
 supports 'centos', '~> 7.0'
 supports 'redhat', '~> 7.0'
 
