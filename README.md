@@ -1,7 +1,7 @@
 # cog_nginx-cookbook
 
 Installs NGINX nginx-release rpm and nginx
-provides cog_nginx_site 
+provides cog_nginx_site
 
 ## Supported Platforms
 
@@ -17,9 +17,15 @@ Centos 7
     <th>Default</th>
   </tr>
   <tr>
-    <td><tt>['cog_nginx']['bacon']</tt></td>
+    <td><tt>['cog_nginx']['manage_logentries']</tt></td>
     <td>Boolean</td>
-    <td>whether to include bacon</td>
+    <td>whether to create configuration files for logentries agent</td>
+    <td><tt>false</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['cog_nginx']['install_monitoring_site']</tt></td>
+    <td>Boolean</td>
+    <td>whether to create site for monitoring tools</td>
     <td><tt>true</tt></td>
   </tr>
 </table>
