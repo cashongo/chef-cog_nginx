@@ -75,14 +75,13 @@ cookbook_file 'fastcgi_cache.conf' do
   path '/etc/nginx/conf.d/fastcgi_cache.conf'
 end
 
-cookbook_file 'piwik_nocache.conf' do
+cookbook_file 'nginx.conf' do
   action :create
   mode '0644'
   owner 'root'
   group 'root'
-  path '/etc/nginx/conf.d/piwik_nocache.conf'
+  path '/etc/nginx/nginx.conf'
 end
-
 
 %w[pma.conf  wordpress.conf  wordpress-w3-total-cache.conf  wordpress-wp-super-cache.conf  wordpress-restrictions.conf dokuwiki.conf php.conf monitoring.conf piwik.conf fcgi_piwik_cache.conf  fcgi_piwik_long_cache.conf].each do |nginxconf|
   cookbook_file nginxconf do
