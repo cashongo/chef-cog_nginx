@@ -38,13 +38,38 @@ action :create  do
     to "../sites-available/#{new_resource.siteid}.conf"
     only_if { new_resource.enabled }
   end
+
+  directory "/etc/le/conf.d" do
+    action :create
+    owner 'root'
+    group 'root'
+    mode '0755'
+    only_if { node['cog_nginx']['manage_logentries'] && ::File.exist?("/etc/le") && !::File.exist?("/etc/le/conf.d") }
+  end
+
+  template "/etc/le/conf.d/#{new_resource.siteid}.conf" do
+    action :create
+    owner 'root'
+    group 'root'
+    cookbook 'cog_nginx'
+    mode '0644'
+    source 'nginx_logentries.conf.erb'
+    variables({
+      :sitename => new_resource.sitename
+      })
+
+    only_if { node['cog_nginx']['manage_logentries'] && ::File.exist?("/etc/le") && ::File.exist?("/etc/le/conf.d") }
+  end
 end
 
 action :delete do
-  file "/etc/nginx/sites-enabled/#{new_resource.siteid}.conf" do
-    action :delete
-  end
-  file "/etc/nginx/sites-available/#{new_resource.siteid}.conf" do
-    action :delete
+  [
+    "/etc/nginx/sites-enabled/#{new_resource.siteid}.conf",
+    "/etc/nginx/sites-available/#{new_resource.siteid}.conf",
+    "/etc/le/conf.d/#{new_resource.siteid}.conf"
+  ].each do |i|
+    file i do
+      action :delete
+    end
   end
 end
