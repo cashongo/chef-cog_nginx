@@ -1,6 +1,6 @@
 server {
         listen          <%= @listen %>;
-        access_log      /var/log/nginx/<%= @sitename %>_access.log;
+        access_log      /var/log/nginx/<%= @sitename %>_access.log main;
         error_log       /var/log/nginx/<%= @sitename %>_error.log;
 
         server_name     <%= @sitename %> <% for @aliasname in @sitealiases %> <%= @aliasname %><% end %>;
