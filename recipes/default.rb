@@ -46,33 +46,23 @@ cookbook_file "sites.conf" do
   mode "0644"
 end
 
-directory '/etc/nginx/sites-enabled' do
-  action :create
-  owner 'root'
-  group 'root'
-  mode '0755'
+['/etc/nginx/sites-enabled','/etc/nginx/sites-available','/etc/nginx/include'].each do |i|
+  directory i do
+    action :create
+    owner 'root'
+    group 'root'
+    mode '0755'
+  end
 end
 
-directory '/etc/nginx/sites-available' do
-  action :create
-  owner 'root'
-  group 'root'
-  mode '0755'
-end
-
-directory '/etc/nginx/include' do
-  action :create
-  owner 'root'
-  group 'root'
-  mode '0755'
-end
-
-cookbook_file 'fastcgi_cache.conf' do
-  action :create
-  mode '0644'
-  owner 'root'
-  group 'root'
-  path '/etc/nginx/conf.d/fastcgi_cache.conf'
+['fastcgi_cache.conf','piwik_nocache.conf'].each do |i|
+  cookbook_file i do
+    action :create
+    mode '0644'
+    owner 'root'
+    group 'root'
+    path "/etc/nginx/conf.d/#{i}"
+  end
 end
 
 cookbook_file 'nginx.conf' do
